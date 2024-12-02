@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: . # Use the current directory as the build context
+      args:
+        - DEV=true # Pass the DEV argument to the Dockerfile
+    ports:
+      - "8000:8000" # Map port 8000 on the host to port 8000 in the container
+    volumes:
+      - ./app:/app # Mount the local 'app' directory into the container for live updates
+    command: >
+      python manage.py runserver 0.0.0.0:8000
+
+
